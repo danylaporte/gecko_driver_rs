@@ -18,8 +18,12 @@ pub enum Args {
 ///
 /// See [firefoxOptions](https://developer.mozilla.org/en-US/docs/Web/WebDriver/Capabilities/firefoxOptions) for more info.
 #[derive(Serialize)]
+#[serde(rename_all = "camelCase")]
 pub struct Capabilities {
+    pub accept_insecure_certs: bool,
+    pub application_cache_enabled: bool,
     pub args: Vec<Args>,
+    pub use_automation_extension: bool,
 }
 
 impl From<Capabilities> for Map<String, Value> {
